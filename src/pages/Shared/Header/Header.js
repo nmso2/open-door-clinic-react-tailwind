@@ -1,5 +1,5 @@
 import { React, Fragment } from 'react'
-import { BellIcon, MenuIcon, UserCircleIcon, XIcon } from '@heroicons/react/outline'
+import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Link } from 'react-router-dom';
 
