@@ -2,6 +2,7 @@ import { React, Fragment } from 'react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Link } from 'react-router-dom';
+import logo from '../../../resources/images/logo-white.png'
 
 
 
@@ -19,7 +20,7 @@ function classNames(...classes) {
 const Header = () => {
     return (
         <div>
-            <Disclosure as="nav" className="bg-gray-800">
+            <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-50">
                 {({ open }) => (
                     <>
                         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -39,12 +40,12 @@ const Header = () => {
                                     <div className="flex-shrink-0 flex items-center">
                                         <img
                                             className="block lg:hidden h-8 w-auto"
-                                            src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                                            src={logo}
                                             alt="Workflow"
                                         />
                                         <img
                                             className="hidden lg:block h-8 w-auto"
-                                            src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                                            src={logo}
                                             alt="Workflow"
                                         />
                                     </div>
@@ -67,13 +68,10 @@ const Header = () => {
                                     </div>
                                 </div>
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                                    <button
-                                        type="button"
-                                        className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                                    >
-                                        <span className="sr-only">View notifications</span>
-                                        <BellIcon className="h-6 w-6" aria-hidden="true" />
-                                    </button>
+
+                                    <Link to="/login" className="text-gray-300 hover:bg-gray-700  hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                        Sign in
+                                    </Link>
 
                                     {/* Profile dropdown */}
                                     <Menu as="div" className="ml-3 relative">
