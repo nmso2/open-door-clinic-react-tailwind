@@ -7,6 +7,7 @@ import Home from './pages/Home/Home/Home';
 import Login from './pages/Login/Login/Login';
 import AuthProvider from './context/AuthProvider';
 import UserProfile from './pages/UserProfile/UserProfile';
+import SignUp from './pages/SignUp/SignUp';
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <Route path="/login">
               <Login></Login>
+            </Route>
+            <Route path="/signup">
+              <SignUp></SignUp>
             </Route>
             <Route path="/profile">
               <UserProfile></UserProfile>
