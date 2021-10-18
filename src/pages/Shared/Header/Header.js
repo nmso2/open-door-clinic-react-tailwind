@@ -21,7 +21,6 @@ function classNames(...classes) {
 const Header = () => {
 
     const { user, logOut } = useAuth();
-    console.log(user.photoURL);
     return (
         <div>
             <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-50">

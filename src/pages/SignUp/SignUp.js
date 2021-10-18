@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import React from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
@@ -7,29 +6,11 @@ import logo from '../../resources/images/logo-black.png'
 
 const SignUp = () => {
 
-    const { logInUsingGoogle, setIsLoading } = useAuth();
+    const { logInUsingGoogle, setIsLoading, createNewUser, handleNameChange, handaleEmailChange, handalePasswordChange, email, password, setUserName } = useAuth();
 
     const location = useLocation();
     const history = useHistory()
     const redirect_uri = location.state?.from || '/';
-
-
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-
-
-    const handleNameChange = e => {
-        setName(e.target.value);
-    }
-    const handaleEmailChange = e => {
-        setEmail(e.target.value);
-    }
-    const handalePasswordChange = e => {
-        setPassword(e.target.value);
-    }
-
 
     const handleGoogleLogIn = () => {
         logInUsingGoogle()
@@ -40,30 +21,38 @@ const SignUp = () => {
             }).finally(() => setIsLoading(false));
     }
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const handleCreateUser = (e) => {
+        e.preventDefault();
+
+        createNewUser(email, password)
+            .then(userCredential => { 
+                setUserName();
+                history.push('/login');
+                alert('Your Accound have been created!')
+            }).catch((error) => { 
+                const errorMessage = error.message;
+                console.log(errorMessage)
+            }).finally(() => { setIsLoading(false) });
+    }
 
     return (
         <div className="flex justify-center min-h-screen bg-gray-100">
             <div className="container my-12 max-w-md border-2 border-gray-200 p-12 bg-white my-auto">
                 <img src={logo} alt="" className="mb-3" />
                 <p className="mb-8 text-2xl">Sign up for your account</p>
-                <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+                <form className="flex flex-col" onSubmit={handleCreateUser}>
 
                     <div className="flex flex-col">
-                        <input onBlur={handleNameChange} type="text" name="name" id="name" placeholder="Your name" {...register("name", { required: true })} className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 mb-3" />
-                        {errors.name?.type === 'required' && <span className="mb-5 text-red-500">This field is required</span>}
+                        <input onBlur={handleNameChange} type="text" name="name" id="name" placeholder="Your name" required className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 mb-3" />
                     </div>
 
                     <div className="flex flex-col">
-                        <input onBlur={handaleEmailChange} type="email" name="email" id="email" placeholder="Your email address" {...register("email", { required: true })} className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 mb-3" />
-                        {errors.email && <span className="mb-5 text-red-500">This field is required</span>}
+                        <input onBlur={handaleEmailChange} type="email" name="email" id="email" placeholder="Your email address" required className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 mb-3" />
                     </div>
 
                     <div className="flex flex-col">
-                        <input onBlur={handalePasswordChange} type="password" name="password" id="password" placeholder="Your password" {...register("password", { required: true })} className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 mb-3" />
+                        <input onBlur={handalePasswordChange} type="password" name="password" id="password" placeholder="Your password" required className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 mb-3" />
 
-                        {errors.password && <span className="mb-5 text-red-500">This field is required</span>}
                     </div>
 
                     <div className="mb-6">
