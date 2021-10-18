@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -12,6 +12,24 @@ const SignUp = () => {
     const location = useLocation();
     const history = useHistory()
     const redirect_uri = location.state?.from || '/';
+
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+
+
+    const handleNameChange = e => {
+        setName(e.target.value);
+    }
+    const handaleEmailChange = e => {
+        setEmail(e.target.value);
+    }
+    const handalePasswordChange = e => {
+        setPassword(e.target.value);
+    }
+
 
     const handleGoogleLogIn = () => {
         logInUsingGoogle()
@@ -33,17 +51,17 @@ const SignUp = () => {
                 <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
 
                     <div className="flex flex-col">
-                        <input type="text" name="name" id="name" placeholder="Your name" {...register("name", { required: true })} className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 mb-3" />
+                        <input onBlur={handleNameChange} type="text" name="name" id="name" placeholder="Your name" {...register("name", { required: true })} className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 mb-3" />
                         {errors.name?.type === 'required' && <span className="mb-5 text-red-500">This field is required</span>}
                     </div>
 
                     <div className="flex flex-col">
-                        <input type="email" name="email" id="email" placeholder="Your email address" {...register("email", { required: true })} className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 mb-3" />
+                        <input onBlur={handaleEmailChange} type="email" name="email" id="email" placeholder="Your email address" {...register("email", { required: true })} className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 mb-3" />
                         {errors.email && <span className="mb-5 text-red-500">This field is required</span>}
                     </div>
 
                     <div className="flex flex-col">
-                        <input type="password" name="password" id="password" placeholder="Your password" {...register("password", { required: true })} className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 mb-3" />
+                        <input onBlur={handalePasswordChange} type="password" name="password" id="password" placeholder="Your password" {...register("password", { required: true })} className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 mb-3" />
 
                         {errors.password && <span className="mb-5 text-red-500">This field is required</span>}
                     </div>
