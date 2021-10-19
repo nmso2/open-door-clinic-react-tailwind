@@ -8,6 +8,8 @@ import Login from './pages/Login/Login/Login';
 import AuthProvider from './context/AuthProvider';
 import UserProfile from './pages/UserProfile/UserProfile';
 import SignUp from './pages/SignUp/SignUp';
+import PrivateRoute from './pages/PrivateRoute/PrivateRoute';
+import ServiceDetails from './ServiceDetails/ServiceDetails';
 
 function App() {
   return (
@@ -34,6 +36,9 @@ function App() {
             <Route path="/profile">
               <UserProfile></UserProfile>
             </Route>
+            <PrivateRoute path="/service/:ID">
+              <ServiceDetails></ServiceDetails>
+            </PrivateRoute>
           </Switch>
         </BrowserRouter>
       </AuthProvider>

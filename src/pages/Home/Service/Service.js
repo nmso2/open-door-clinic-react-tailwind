@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Service = (props) => {
-    const { name, img, details } = props.service;
+    const { name, img, details, id } = props.service;
     return (
         <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
             <article className="overflow-hidden rounded-lg shadow-md lg:min-h-full hover:shadow-2xl duration-500">
@@ -16,7 +17,8 @@ const Service = (props) => {
                     <p className="ml-2 text-lg">{details}</p>
                 </footer>
 
-                <button className="underline mb-3 hover:text-red-400">See more</button>
+                <Link to ={`/service/${id}`}><button className="underline mb-3 hover:text-red-400">See more</button></Link>
+                
             </article>
 
         </div>
