@@ -1,6 +1,7 @@
 import React from 'react';
 import useServices from '../../../hooks/useServices';
 import CaroItem from '../CaroItem/CaroItem';
+import CounterItem from '../CounterItem/CounterItem';
 import Service from '../Service/Service';
 
 const Home = () => {
@@ -25,7 +26,8 @@ const Home = () => {
                     }
                 </div>
             </div>
-
+            
+            <CounterItem></CounterItem>
 
         </div>
     );
