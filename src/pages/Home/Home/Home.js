@@ -3,6 +3,7 @@ import useServices from '../../../hooks/useServices';
 import CaroItem from '../CaroItem/CaroItem';
 import CounterItem from '../CounterItem/CounterItem';
 import Service from '../Service/Service';
+import Suggestion from '../Suggestion/Suggestion';
 
 const Home = () => {
 
@@ -11,6 +12,8 @@ const Home = () => {
     return (
         <div>
             <CaroItem></CaroItem>
+            
+            <Suggestion></Suggestion>
 
             <h2 className="text-4xl mb-0 mt-12 flex flex-wrap -mx-1 lg:-mx-4 container mb-12 mx-auto px-4 md:px-12">Our Services</h2>
             <div className="container mb-12 mx-auto px-4 md:px-12">
@@ -20,7 +23,7 @@ const Home = () => {
                     }
                 </div>
             </div>
-            
+
             <CounterItem></CounterItem>
 
         </div>
