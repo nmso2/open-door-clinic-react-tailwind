@@ -7,15 +7,14 @@ const ServiceDetails = () => {
 
     const [services] = useServices();
 
-    const service = services.filter(servise => parseInt(ID) === servise.id);
     return (
-        <div>
+        <div className="inline-block m-12 p-12 shadow-2xl">
 
             {
                 services.filter(servise => parseInt(ID) === servise.id).map(service => <div>
-                    <img src={service.img} alt="" />
-                    <p>Name: {service.name}</p>
-                    <p>Details:{service.details}</p>
+                    <img className="mx-auto" src={service.img} alt="" />
+                    <p className="text-3xl p-5">{service.name}</p>
+                    <p className="max-w-2xl text-lg">{service.details}</p>
                 </div>)
             }
 

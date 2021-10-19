@@ -10,6 +10,7 @@ import UserProfile from './pages/UserProfile/UserProfile';
 import SignUp from './pages/SignUp/SignUp';
 import PrivateRoute from './pages/PrivateRoute/PrivateRoute';
 import ServiceDetails from './ServiceDetails/ServiceDetails';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
             <PrivateRoute path="/service/:ID">
               <ServiceDetails></ServiceDetails>
             </PrivateRoute>
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
           </Switch>
         </BrowserRouter>
       </AuthProvider>
