@@ -10,7 +10,7 @@ const useFirebase = () => {
     const googleProvider = new GoogleAuthProvider();
 
     const [user, setUser] = useState({});
-    const [error, setError] = useState({});
+    const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     
     const [name, setName] = useState('');
@@ -60,6 +60,7 @@ const useFirebase = () => {
         setIsLoading(true);
         signOut(auth).then(() => {
             setUser({});
+            setError('');
         }).catch((error) => {
             setError(error);
         }).finally(() => setIsLoading(false));
@@ -69,6 +70,7 @@ const useFirebase = () => {
         updateProfile(auth.currentUser, {
             displayName: name
         }).then((result) => {
+            setError('');
         }).catch((error) => {
             setError(error);
         });
@@ -90,7 +92,8 @@ const useFirebase = () => {
         name,
         email,
         password,
-        setUserName
+        setUserName,
+        setError
     }
 
 }

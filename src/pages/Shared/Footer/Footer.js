@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div>
-            <footer className="bg-gray-800 pt-10 sm:mt-10 pt-10">
+            <footer className="bg-gray-800 pt-5 sm:mt-10 pt-5">
                 <div className="max-w-6xl m-auto text-gray-800 flex flex-wrap justify-left">
 
 
@@ -63,29 +63,11 @@ const Footer = () => {
                 </div>
 
                 <div className="pt-2">
-                    <div className="flex pb-5 px-3 m-auto pt-5 
+                    <div className="pb-5 px-3 m-auto pt-5 
             border-t border-gray-500 text-gray-400 text-sm 
             flex-col md:flex-row max-w-6xl">
                         <div className="mt-2">
                             © Copyright 1998-2021. All Rights Reserved by <a className="uppercase" href="https://github.com/nmso2">Md. Nagib Mahfuz Subho.</a>
-                        </div>
-
-                        <div className="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
-                            <Link to='/' className="w-6 mx-1">
-                                <i className="uil uil-facebook-f"></i>
-                            </Link>
-                            <Link to='/' className="w-6 mx-1">
-                                <i className="uil uil-twitter-alt"></i>
-                            </Link>
-                            <Link to='/' className="w-6 mx-1">
-                                <i className="uil uil-youtube"></i>
-                            </Link>
-                            <Link to='/' className="w-6 mx-1">
-                                <i className="uil uil-linkedin"></i>
-                            </Link>
-                            <Link to='/' className="w-6 mx-1">
-                                <i className="uil uil-instagram"></i>
-                            </Link>
                         </div>
                     </div>
                 </div>

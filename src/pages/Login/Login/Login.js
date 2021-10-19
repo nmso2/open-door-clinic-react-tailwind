@@ -6,7 +6,7 @@ import logo from '../../../resources/images/logo-black.png'
 
 const Login = () => {
 
-    const { logInUsingGoogle, setIsLoading, loginWithEmailPassword, handaleEmailChange, handalePasswordChange, email, password, setUser } = useAuth();
+    const { logInUsingGoogle, setIsLoading, loginWithEmailPassword, handaleEmailChange, handalePasswordChange, email, password, setUser, error, setError } = useAuth();
 
     const location = useLocation();
     const history = useHistory()
@@ -16,8 +16,9 @@ const Login = () => {
         logInUsingGoogle()
             .then((result) => {
                 history.push(redirect_uri);
+                setError('');
             }).catch((error) => {
-
+                setError(error.message);
             }).finally(() => setIsLoading(false));
     }
 
@@ -26,9 +27,10 @@ const Login = () => {
         loginWithEmailPassword(email, password)
             .then(result => {
                 history.push(redirect_uri);
+                setError('')
                 setUser(result);
             }).catch((error) => {
-
+                setError(error.message);
             }).finally(() => setIsLoading(false));
     }
 
@@ -40,6 +42,9 @@ const Login = () => {
                         <img src={logo} alt="" className="px-5 mb-5" />
                         <p className="text-gray-500 text-2xl">Sign in to access your account</p>
                     </div>
+                    {
+                        error ? <p className="text-red-500">Error: {error}</p> : <p></p>
+                    }
                     <div className="m-6">
                         <form className="mb-4">
                             <div className="mb-6">

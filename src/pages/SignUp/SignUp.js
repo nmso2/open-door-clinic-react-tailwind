@@ -6,7 +6,7 @@ import logo from '../../resources/images/logo-black.png'
 
 const SignUp = () => {
 
-    const { logInUsingGoogle, setIsLoading, createNewUser, handleNameChange, handaleEmailChange, handalePasswordChange, email, password, setUserName } = useAuth();
+    const { logInUsingGoogle, setIsLoading, createNewUser, handleNameChange, handaleEmailChange, handalePasswordChange, email, password, setUserName, error, setError } = useAuth();
 
     const location = useLocation();
     const history = useHistory()
@@ -16,8 +16,9 @@ const SignUp = () => {
         logInUsingGoogle()
             .then((result) => {
                 history.push(redirect_uri);
+                setError('');
             }).catch((error) => {
-
+                setError(error.message);
             }).finally(() => setIsLoading(false));
     }
 
@@ -29,17 +30,20 @@ const SignUp = () => {
                 setUserName();
                 history.push('/login');
                 alert('Your Accound have been created!')
-            }).catch((error) => { 
-                const errorMessage = error.message;
-                console.log(errorMessage)
+                setError('');
+            }).catch((error) => {
+                setError(error.message);
             }).finally(() => { setIsLoading(false) });
     }
 
     return (
-        <div className="flex justify-center min-h-screen bg-gray-100">
+        <div className="flex justify-center min-h-screen bg-gray-100 p-20">
             <div className="container my-12 max-w-md border-2 border-gray-200 p-12 bg-white my-auto">
                 <img src={logo} alt="" className="mb-3" />
                 <p className="mb-8 text-2xl">Sign up for your account</p>
+                {
+                        error ? <p className="text-red-500 mb-5">Error: {error}</p> : <p></p>
+                    }
                 <form className="flex flex-col" onSubmit={handleCreateUser}>
 
                     <div className="flex flex-col">
