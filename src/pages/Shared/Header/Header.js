@@ -9,8 +9,8 @@ import useAuth from '../../../hooks/useAuth';
 
 const navigation = [
     { name: 'Home', to: '/', current: true },
-    { name: 'Team', to: '#', current: false },
-    { name: 'Projects', to: '#', current: false },
+    { name: 'Doctors', to: '/doctors', current: false },
+    { name: 'Blog', to: '/blog', current: false },
     { name: 'About', to: '/about', current: false },
 ]
 

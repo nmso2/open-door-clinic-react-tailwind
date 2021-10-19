@@ -12,6 +12,8 @@ import PrivateRoute from './pages/PrivateRoute/PrivateRoute';
 import ServiceDetails from './ServiceDetails/ServiceDetails';
 import NotFound from './pages/NotFound/NotFound';
 import Footer from './pages/Shared/Footer/Footer';
+import Blog from './pages/Blog/Blog/Blog';
+import Doctors from './pages/Doctors/Doctors/Doctors';
 
 function App() {
   return (
@@ -29,6 +31,12 @@ function App() {
             <Route path="/about">
               <AboutUs></AboutUs>
             </Route>
+            <PrivateRoute path="/doctors">
+              <Doctors></Doctors>
+            </PrivateRoute>
+            <PrivateRoute path="/blog">
+              <Blog></Blog>
+            </PrivateRoute>
             <Route path="/login">
               <Login></Login>
             </Route>
