@@ -75,7 +75,8 @@ const Header = () => {
                                     {!user?.email ? <Link to="/login" className="text-gray-300 hover:bg-gray-700  hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                         Sign in
                                     </Link> : <Menu as="div" className="ml-3 relative">
-                                        <div>
+                                        <div className="flex">
+                                            <p className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium:">{user.displayName}</p>
                                             <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                                                 <span className="sr-only">Open user menu</span>
                                                 {user?.photoURL? <img
@@ -102,7 +103,7 @@ const Header = () => {
                                                             to="/profile"
                                                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                         >
-                                                            Your Profile
+                                                            {user.displayName}
                                                         </Link>
                                                     )}
                                                 </Menu.Item>
