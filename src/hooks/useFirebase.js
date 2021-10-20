@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GithubAuthProvider } from "firebase/auth";
 import initializeAuthentication from "../pages/Login/Firebase/firebase.init";
 
 initializeAuthentication();
@@ -8,11 +8,12 @@ const useFirebase = () => {
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
-    
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,8 +22,12 @@ const useFirebase = () => {
         setIsLoading(true);
         return signInWithPopup(auth, googleProvider)
     }
+    const logInUsingGithub = () => {
+        setIsLoading(true);
+        return signInWithPopup(auth, githubProvider)
+    }
 
-    
+
     const handleNameChange = e => {
         setName(e.target.value);
     }
@@ -43,6 +48,9 @@ const useFirebase = () => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
+
+
+
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -55,7 +63,7 @@ const useFirebase = () => {
         // eslint-disable-next-line
     }, [])
 
-    
+
     const logOut = () => {
         setIsLoading(true);
         signOut(auth).then(() => {
@@ -93,7 +101,8 @@ const useFirebase = () => {
         email,
         password,
         setUserName,
-        setError
+        setError,
+        logInUsingGithub
     }
 
 }

@@ -6,7 +6,7 @@ import logo from '../../../resources/images/logo-black.png'
 
 const Login = () => {
 
-    const { logInUsingGoogle, setIsLoading, loginWithEmailPassword, handaleEmailChange, handalePasswordChange, email, password, setUser, error, setError } = useAuth();
+    const { logInUsingGoogle, setIsLoading, loginWithEmailPassword, handaleEmailChange, handalePasswordChange, email, password, setUser, error, setError, logInUsingGithub } = useAuth();
 
     const location = useLocation();
     const history = useHistory()
@@ -14,6 +14,15 @@ const Login = () => {
 
     const handleGoogleLogIn = () => {
         logInUsingGoogle()
+            .then((result) => {
+                history.push(redirect_uri);
+                setError('');
+            }).catch((error) => {
+                setError(error.message);
+            }).finally(() => setIsLoading(false));
+    }
+    const handleGithubLogIn = () => {
+        logInUsingGithub()
             .then((result) => {
                 history.push(redirect_uri);
                 setError('');
@@ -74,7 +83,7 @@ const Login = () => {
                             <button className="bg-green-500 text-white w-full p-2 flex flex-row justify-center gap-2 items-center rounded-sm hover:bg-green-600 duration-100 ease-in-out" onClick={handleGoogleLogIn}>
                                 Google
                             </button>
-                            <button className="bg-gray-700 text-white w-full p-2 flex flex-row justify-center gap-2 items-center rounded-sm hover:bg-gray-800 duration-100 ease-in-out">
+                            <button className="bg-gray-700 text-white w-full p-2 flex flex-row justify-center gap-2 items-center rounded-sm hover:bg-gray-800 duration-100 ease-in-out" onClick={handleGithubLogIn}>
 
                                 Github
                             </button>
