@@ -8,7 +8,7 @@ const ServiceDetails = () => {
     const [services] = useServices();
 
     return (
-        <div className="inline-block m-12 p-12 shadow-2xl">
+        <div className="shadow-2xl m-12 p-8 lg:inline-block">
 
             {
                 services.filter(servise => parseInt(ID) === servise.id).map(service => <div>
