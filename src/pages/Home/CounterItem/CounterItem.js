@@ -8,7 +8,7 @@ import { CountUp } from 'use-count-up'
 const CounterItem = () => {
     return (
         <div>
-            <div className="min-w-screen min-h-full bg-gray-100 flex items-center justify-center bg-gray-100 p-16">
+            <div className="min-w-screen min-h-full bg-gray-100 flex items-center justify-center bg-gray-100 p-10">
                 <div className="max-w-7xl w-full mx-auto py-6 sm:px-6 lg:px-8">
                     <p className="">SOME STATISTICS</p>
                     <h3 className="pb-16 text-4xl">OUR CLINIC IN NUMBERS</h3>
