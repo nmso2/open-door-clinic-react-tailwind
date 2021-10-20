@@ -2,7 +2,6 @@ import React from 'react';
 
 const Doctor = (props) => {
     const { name, address, img, phone, workday, speciality } = props.doctor;
-    console.log(props.doctor);
     return (
         <div className="my-1 px-1 w-full md:w-1/2 lg:my-12 lg:px-4 lg:w-1/2">
             <article className="overflow-hidden flex rounded-lg shadow-md lg:min-h-full hover:shadow-2xl duration-500">

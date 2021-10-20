@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GithubAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, FacebookAuthProvider, GithubAuthProvider } from "firebase/auth";
 import initializeAuthentication from "../pages/Login/Firebase/firebase.init";
 
 initializeAuthentication();
@@ -9,6 +9,7 @@ const useFirebase = () => {
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
+    const facebookProvider= new FacebookAuthProvider();
 
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
@@ -18,15 +19,21 @@ const useFirebase = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+
     const logInUsingGoogle = () => {
         setIsLoading(true);
         return signInWithPopup(auth, googleProvider)
     }
+
     const logInUsingGithub = () => {
         setIsLoading(true);
         return signInWithPopup(auth, githubProvider)
     }
 
+    const logInUsingFacebook = () => {
+        setIsLoading(true);
+        return signInWithPopup(auth, facebookProvider)
+    }
 
     const handleNameChange = e => {
         setName(e.target.value);
@@ -102,7 +109,8 @@ const useFirebase = () => {
         password,
         setUserName,
         setError,
-        logInUsingGithub
+        logInUsingGithub,
+        logInUsingFacebook
     }
 
 }

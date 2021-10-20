@@ -6,7 +6,7 @@ import logo from '../../../resources/images/logo-black.png'
 
 const Login = () => {
 
-    const { logInUsingGoogle, setIsLoading, loginWithEmailPassword, handaleEmailChange, handalePasswordChange, email, password, setUser, error, setError, logInUsingGithub } = useAuth();
+    const { logInUsingGoogle, setIsLoading, loginWithEmailPassword, handaleEmailChange, handalePasswordChange, email, password, setUser, error, setError, logInUsingGithub, logInUsingFacebook } = useAuth();
 
     const location = useLocation();
     const history = useHistory()
@@ -30,6 +30,15 @@ const Login = () => {
                 setError(error.message);
             }).finally(() => setIsLoading(false));
     }
+    const handleFacebookLogIn = () => {
+        logInUsingFacebook()
+            .then((result) => {
+                history.push(redirect_uri);
+                setError('');
+            }).catch((error) => {
+                setError(error.message);
+            }).finally(() => setIsLoading(false));
+    }
 
     const handleEmailLogin = e => {
         e.preventDefault();
@@ -46,15 +55,15 @@ const Login = () => {
     return (
         <div>
             <div className="flex justify-center min-h-screen bg-gray-100">
-                <div className="container my-12 max-w-md border-2 border-gray-200 p-3 bg-white">
+                <div className="container my-12 max-w-md border-2 border-gray-200 p-10 bg-white">
                     <div className="text-center my-6">
-                        <img src={logo} alt="" className="px-5 mb-5" />
-                        <p className="text-gray-500 text-2xl">Sign in to access your account</p>
+                        <img src={logo} alt="" className="mb-3" />
+                        <p className="text-gray-500 text-2xl ">Sign in to access your account</p>
                     </div>
                     {
-                        error ? <p className="text-red-500">Error: {error}</p> : <p></p>
+                        error ? <p className="text-red-500 mb-5">Error: {error}</p> : <p></p>
                     }
-                    <div className="m-6">
+                    <div>
                         <form className="mb-4">
                             <div className="mb-6">
                                 <label htmlFor="email" className="block mb-2 text-sm text-gray-600 text-left dark:text-gray-400">Email Address</label>
@@ -86,6 +95,10 @@ const Login = () => {
                             <button className="bg-gray-700 text-white w-full p-2 flex flex-row justify-center gap-2 items-center rounded-sm hover:bg-gray-800 duration-100 ease-in-out" onClick={handleGithubLogIn}>
 
                                 Github
+                            </button>
+                            <button className="bg-blue-700 text-white w-full p-2 flex flex-row justify-center gap-2 items-center rounded-sm hover:bg-blue-800 duration-100 ease-in-out" onClick={handleFacebookLogIn}>
+
+                                Facebook
                             </button>
                         </div>
                     </div>

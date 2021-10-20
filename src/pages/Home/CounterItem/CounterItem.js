@@ -23,7 +23,7 @@ const CounterItem = () => {
 
                                     </div>
                                     <div className="flex flex-col justify-center">
-                                        <div className=" text-6xl text-blue-400 "><CountUp isCounting end={2300} duration={5} />+</div>
+                                        <div className=" text-6xl text-blue-400"><CountUp isCounting end={2300} duration={5} />+</div>
                                         <div className="text-lg text-blue-400">Patients a year</div>
                                     </div>
                                 </div>
