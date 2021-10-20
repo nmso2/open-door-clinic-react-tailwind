@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Open Door Clinic
 
 Live Link: [Open Door Clinic](https://open-door-clinic.web.app/)
 
