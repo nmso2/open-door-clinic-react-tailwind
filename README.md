@@ -1,8 +1,9 @@
 # Getting Started with Create React App
 
-Live Link: [Open Door Clinic](https://open-door-clinic.web.app/).
+Live Link: [Open Door Clinic](https://open-door-clinic.web.app/)
 
-## Available Scripts
+
+## Features
 
 - This project is build with React
 - Tailwind CSS is used as CSS framework
