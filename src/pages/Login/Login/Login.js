@@ -88,17 +88,17 @@ const Login = () => {
                             <span className="absolute bg-white px-4 text-gray-500">or sign-in with</span>
                             <div className="w-full bg-gray-200 mt-3 h-px"></div>
                         </div>
-                        <div className="flex flex-row gap-2">
-                            <button className="bg-green-500 text-white w-full p-2 flex flex-row justify-center gap-2 items-center rounded-sm hover:bg-green-600 duration-100 ease-in-out" onClick={handleGoogleLogIn}>
-                                Google
+                        <div>
+                            <button className="icon w-14 p-3.5 bg-blue-500 text-white rounded-full mr-3 hover:bg-blue-600 duration-100 ease-in-out" onClick={handleGoogleLogIn}>
+                            <i className="fab fa-google"></i>
                             </button>
-                            <button className="bg-gray-700 text-white w-full p-2 flex flex-row justify-center gap-2 items-center rounded-sm hover:bg-gray-800 duration-100 ease-in-out" onClick={handleGithubLogIn}>
+                            <button className="icon w-14 p-3.5 bg-gray-700 text-white rounded-full mr-3 hover:bg-gray-800 duration-100 ease-in-out" onClick={handleGithubLogIn}>
 
-                                Github
+                            <i className="fab fa-github"></i>
                             </button>
-                            <button className="bg-blue-700 text-white w-full p-2 flex flex-row justify-center gap-2 items-center rounded-sm hover:bg-blue-800 duration-100 ease-in-out" onClick={handleFacebookLogIn}>
+                            <button className="icon w-14 p-3.5 bg-blue-600 text-white rounded-full mr-3 hover:bg-blue-700 duration-100 ease-in-out" onClick={handleFacebookLogIn}>
 
-                                Facebook
+                            <i className="fab fa-facebook-f"></i>
                             </button>
                         </div>
                     </div>
